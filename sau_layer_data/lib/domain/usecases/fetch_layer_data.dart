@@ -10,6 +10,6 @@ class FetchLayerData {
   FetchLayerData(this.repository);
 
   Future<Either<Failure, List<NasaLayerData>>> call() async {
-    return await repository.fetchLayerData();
+    return await repository.nasaHistory();
   }
 }
