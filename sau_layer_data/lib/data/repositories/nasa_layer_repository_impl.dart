@@ -11,9 +11,9 @@ class NasaLayerRepositoryImpl implements NasaLayerRepository {
   NasaLayerRepositoryImpl(this.service);
 
   @override
-  Future<Either<Failure, List<NasaLayerData>>> fetchLayerData() async {
+  Future<Either<Failure, List<NasaLayerData>>> nasaHistory() async {
     try {
-      final data = await service.fetchLayerData();
+      final data = await service.nasaHistory();
       return Right(data);
     } catch (e) {
       return Left(ServerFailure());

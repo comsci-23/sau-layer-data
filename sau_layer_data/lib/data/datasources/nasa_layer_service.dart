@@ -3,12 +3,12 @@ import 'package:http/http.dart' as http;
 import 'package:sau_layer_data/domain/entities/nasa_layer_data.dart';
 
 abstract class NasaLayerService {
-  Future<List<NasaLayerData>> fetchLayerData();
+  Future<List<NasaLayerData>> nasaHistory();
 }
 
 class NasaLayerServiceImpl implements NasaLayerService {
   @override
-  Future<List<NasaLayerData>> fetchLayerData() async {
+  Future<List<NasaLayerData>> nasaHistory() async {
     const url = 'https://images-api.nasa.gov/search?q=earth&media_type=image';
 
     final response = await http.get(Uri.parse(url));
