@@ -20,7 +20,6 @@ Clean Code Architecture with BloC Flutter.
 ## Getting started App
 
 set up : Flutter 3.24.4
-unit test: run command run.sh
 
 ## Getting started unit test
 
