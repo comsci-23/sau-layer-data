@@ -11,8 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+TODO: Example Flutter Clean Architecture.
 
 ## Flutter CleanArchitecture
 
@@ -20,7 +19,7 @@ Clean Code Architecture with BloC Flutter.
 
 ## Getting started
 
-set up : Flutter version Flutter 3.24.4
+set up : Flutter 3.24.4
 unit test: run command run.sh
 
 ## Feature Example
