@@ -16,7 +16,10 @@ class NasaLayerServiceImpl implements NasaLayerService {
       final data = json.decode(response.body);
       final items = data['collection']['items'] as List;
 
-      return items.take(50).map((item) => NasaLayerData.fromJson(item)).toList();
+      return items
+          .take(50)
+          .map((item) => NasaLayerData.fromJson(item))
+          .toList();
     } else {
       throw Exception('Failed to fetch layer data');
     }
