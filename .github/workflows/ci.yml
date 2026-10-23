@@ -1,0 +1,36 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.38.9'
+          cache: true
+      - run: flutter pub get
+      - run: dart format --output=none --set-exit-if-changed .
+      - run: flutter analyze
+      - run: flutter test --coverage
+      - name: Coverage summary
+        run: |
+          awk -F: '
+            /^SF:/ { file = $2 }
+            /^LF:/ { found[file] = $2; total_found += $2 }
+            /^LH:/ { hit[file] = $2; total_hit += $2 }
+            END {
+              pct = total_found ? total_hit * 100 / total_found : 0
+              printf "## Test coverage: %.2f%% (%d/%d lines)\n\n", pct, total_hit, total_found
+              print "| File | Coverage |"
+              print "|---|---|"
+              for (f in found)
+                printf "| %s | %.1f%% |\n", f, found[f] ? hit[f] * 100 / found[f] : 0
+            }' coverage/lcov.info | tee -a "$GITHUB_STEP_SUMMARY"
